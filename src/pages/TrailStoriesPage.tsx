@@ -414,16 +414,18 @@ const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design"];
 // the data above are ignored).
 
 // The ONLY projects shown as Featured, pre-arranged so each full desktop row
-// reads app | web | app:  T2C App / Masslos / Harmoniq, then Little Lingo /
-// Fundreef / Latte Delivery, with PPC Analytics Dashboard centered on row 3.
+// reads app | web | app. Web order: PPC Dashboard, Masslos, Fundreef.
+// Row 1: T2C App / PPC / Harmoniq · Row 2: Little Lingo / Masslos / Latte
+// Delivery · Row 3 starts with Fundreef and the rest of the listing flows in
+// right after it (no empty cells).
 const FEATURED_ORDER = [
   "team2challenge",   // app
-  "masslos",          // web
+  "ringba-dashboard", // web — PPC Analytics Dashboard
   "harmoniq",         // app
   "little-lingo",     // app
-  "fundreef",         // web
+  "masslos",          // web
   "latte-delivery",   // app
-  "ringba-dashboard", // web — PPC Analytics Dashboard
+  "fundreef",         // web
 ];
 const FEATURED_SLUGS = new Set(FEATURED_ORDER);
 
@@ -887,11 +889,7 @@ const TrailStoriesPage = () => {
                     scale: 1.03,
                     transition: { duration: 0.3 }
                   }}
-                  className={cn(
-                    "group cursor-pointer relative",
-                    // Center the lone 7th featured card (PPC Dashboard) on desktop row 3.
-                    index === 6 && study.slug === FEATURED_ORDER[6] && "lg:col-start-2"
-                  )}
+                  className="group cursor-pointer relative"
                 >
                   <Link to={`/case-study/${study.slug}`}>
                     <div className="bg-gradient-to-b from-white via-earth-50 to-white rounded-3xl shadow-lg overflow-hidden border border-gray-200/60 h-full flex flex-col relative backdrop-blur-sm hover:shadow-2xl hover:shadow-tribe-blue/15 hover:border-tribe-blue/40 transition-all duration-500">
