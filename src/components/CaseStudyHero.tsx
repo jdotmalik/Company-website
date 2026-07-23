@@ -199,29 +199,30 @@ const CaseStudyHero = ({
                             onMouseLeave={() => setIsPaused(false)}
                             className="group relative h-64 md:h-[520px] rounded-3xl overflow-hidden bg-earth-900/40 ring-1 ring-white/10 shadow-2xl shadow-black/50"
                         >
-                            <AnimatePresence mode="wait">
-                                <motion.div
+                            {/* Crossfade between absolutely-positioned slides. Deliberately NOT
+                                mode="wait": waiting on exit-completion can wedge under React
+                                StrictMode and freeze the slider; with a crossfade the incoming
+                                slide always mounts immediately. Slides serve the lighter .webp
+                                sibling and fall back to the original via onError. */}
+                            <AnimatePresence initial={false}>
+                                <motion.img
                                     key={currentIndex}
+                                    src={images[currentIndex].replace(/\.png$/i, '.webp')}
+                                    onError={(e) => {
+                                        const original = images[currentIndex];
+                                        if (e.currentTarget.getAttribute('src') !== original) {
+                                            e.currentTarget.src = original;
+                                        }
+                                    }}
+                                    alt={`${altPrefix} slide ${currentIndex + 1}`}
+                                    onClick={() => setLightboxIndex(currentIndex)}
                                     initial={{ opacity: 0, scale: 1.04 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.99 }}
                                     transition={{ duration: 0.55, ease: EASE }}
-                                    className="absolute inset-0"
-                                >
-                                    <picture className="block h-full w-full">
-                                        <source
-                                            srcSet={images[currentIndex].replace(/\.png$/i, '.webp')}
-                                            type="image/webp"
-                                        />
-                                        <img
-                                            src={images[currentIndex]}
-                                            alt={`${altPrefix} slide ${currentIndex + 1}`}
-                                            onClick={() => setLightboxIndex(currentIndex)}
-                                            decoding="async"
-                                            className="w-full h-full object-contain cursor-zoom-in"
-                                        />
-                                    </picture>
-                                </motion.div>
+                                    decoding="async"
+                                    className="absolute inset-0 w-full h-full object-contain cursor-zoom-in"
+                                />
                             </AnimatePresence>
 
                             {images.length > 1 && (

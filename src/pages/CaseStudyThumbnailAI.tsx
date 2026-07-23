@@ -15,10 +15,10 @@ import Reveal, { revealContainer, revealItem } from '@/components/Reveal';
 const SLIDER_IMAGES = [
     "/thumbnail-ai/1.png",
     "/thumbnail-ai/2.png",
-    "/thumbnail-ai/3.png",
-    "/thumbnail-ai/4.png",
     "/thumbnail-ai/5.png",
-    "/thumbnail-ai/6.png"
+    "/thumbnail-ai/6.png",
+    "/thumbnail-ai/3.png",
+    "/thumbnail-ai/4.png"
 ];
 
 const CaseStudyThumbnailAI = () => {
