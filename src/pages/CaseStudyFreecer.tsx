@@ -13,7 +13,6 @@ import Reveal, { revealContainer, revealItem } from '@/components/Reveal';
 
 const SLIDER_IMAGES = [
     "/freecer/main.png",
-    "/freecer/1.png",
     "/freecer/3.png",
     "/freecer/6.png",
     "/freecer/8.png"

@@ -397,7 +397,7 @@ const caseStudies = [
     title: "NEOLOHN (Design)",
     category: "Design",
     description: "A minimalist, Apple-inspired HR & payroll dashboard where restraint, whitespace, and precise typography turn dense workforce data — employees, shifts, and payroll — into calm, effortless clarity.",
-    image: "/neolohn/1.png",
+    image: "/neolohn-content/1.webp",
     tags: ["UI/UX Design", "Minimalist Design", "HR & Payroll", "Figma"],
     color: "bg-tribe-blue/10",
     textColor: "text-tribe-blue",
