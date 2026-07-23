@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreBadges from '@/components/StoreBadges';
 import CaseStudyHero from '@/components/CaseStudyHero';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyDivineDuelists = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const CaseStudyDivineDuelists = () => {
         titleAccent="Divine Duelists:"
         title="Strategy Meets Power"
         tagline="Category: Strategy, RPG, Card Game | Platform: Android & iOS | Engine: Unity"
-        images={['/lovable-uploads/6d4bd372-b964-406e-9f75-bbebf64cc458.png']}
+        images={['/divine-duelists-hero/1.png', '/lovable-uploads/6d4bd372-b964-406e-9f75-bbebf64cc458.png']}
         altPrefix="Divine Duelists"
       >
         <StoreBadges
@@ -49,6 +50,13 @@ const CaseStudyDivineDuelists = () => {
                 </p>
               </div>
 
+              <SectionShot
+                variant="wide"
+                src="/divine-duelists-content/project-overview.webp"
+                alt="Divine Duelists project overview"
+                caption="Project overview — the Divine Duelists card battle RPG."
+              />
+
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-red-50 to-red-100 rounded-xl">
                   <Sword className="h-12 w-12 text-red-600 mx-auto mb-4" />
@@ -72,6 +80,13 @@ const CaseStudyDivineDuelists = () => {
               <p className="text-earth-700 mb-6 text-lg leading-relaxed">
                 Divine Duelists was designed from the ground up to challenge the conventions of mobile card games. Instead of relying on pay-to-win mechanics or simple match-3 gameplay, we created a strategic experience that rewards skill, planning, and deck-building mastery.
               </p>
+
+              <SectionShot
+                variant="right"
+                src="/divine-duelists-content/in-app-gameplay.webp"
+                alt="Divine Duelists in-app gameplay"
+                caption="In-app gameplay — strategic card battles in action."
+              />
 
               <div className="bg-blue-50 border-l-4 border-blue-400 p-6 mb-8">
                 <h3 className="text-lg font-semibold text-blue-800 mb-3">Core Design Principles</h3>
@@ -134,6 +149,13 @@ const CaseStudyDivineDuelists = () => {
                   </div>
                 ))}
               </div>
+
+              <SectionShot
+                variant="left"
+                src="/divine-duelists-content/game-features.webp"
+                alt="Divine Duelists game features"
+                caption="Game features — deck building, tactical combat, and evolving AI."
+              />
 
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Achievement</h2>
 
@@ -229,6 +251,13 @@ const CaseStudyDivineDuelists = () => {
                 </p>
                 <p className="text-sm text-purple-600 font-medium">- Marcus 'DragonLord' Chen, Top 100 Ranked Player</p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/divine-duelists-content/other-services.webp"
+                alt="Divine Duelists other services"
+                caption="Other services delivered alongside the core game build."
+              />
             </motion.div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyLittleLingo = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const CaseStudyLittleLingo = () => {
         titleAccent="Little Lingo:"
         title="Language Learning That Grows With Kids"
         tagline="How TTT Revamped a Buggy Codebase into a Vibrant, Multilingual EdTech Platform"
-        images={['/lovable-uploads/ede72a27-07fd-482a-8246-02db292f3af7.png']}
+        images={['/little-lingo-hero/1.png', '/lovable-uploads/ede72a27-07fd-482a-8246-02db292f3af7.png']}
         altPrefix="Little Lingo"
       >
         <StoreBadges
@@ -49,6 +50,13 @@ const CaseStudyLittleLingo = () => {
                   Little Lingo makes early language learning fun, safe, and scalable. Designed for kids and their parents, it delivers colorful, interactive flashcards with multilingual audio across 30+ languages. The challenge? The initial build was buggy, incomplete, and missing key features.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/little-lingo-content/project-overview.webp"
+                alt="Little Lingo project overview"
+                caption="Project overview — the Little Lingo app at a glance."
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-green-50 to-green-100 rounded-xl">
@@ -158,6 +166,21 @@ const CaseStudyLittleLingo = () => {
                 ))}
               </div>
 
+              <div className="grid gap-6 md:grid-cols-2">
+                <SectionShot
+                  variant="pair"
+                  src="/little-lingo-content/functionalites-1.webp"
+                  alt="Little Lingo functionality showcase 1"
+                  caption="Core app functionality in action."
+                />
+                <SectionShot
+                  variant="pair"
+                  src="/little-lingo-content/functionalites-2.webp"
+                  alt="Little Lingo functionality showcase 2"
+                  caption="More flashcard and learning features."
+                />
+              </div>
+
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Implementation</h2>
 
               <div className="bg-earth-50 p-8 rounded-xl mb-12">
@@ -194,6 +217,28 @@ const CaseStudyLittleLingo = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <SectionShot
+                  variant="pair"
+                  src="/little-lingo-content/tech-stack-backend.webp"
+                  alt="Little Lingo backend tech stack"
+                  caption="Backend stack — Node.js, MongoDB, AWS S3, Redis."
+                />
+                <SectionShot
+                  variant="pair"
+                  src="/little-lingo-content/teck-stack-front-end.webp"
+                  alt="Little Lingo frontend tech stack"
+                  caption="Frontend stack — React Native, TypeScript, React Query."
+                />
+              </div>
+
+              <SectionShot
+                variant="wide"
+                src="/little-lingo-content/deploy-ent.webp"
+                alt="Little Lingo deployment"
+                caption="Deployment pipeline for the app and backend services."
+              />
 
               <div className="bg-tribe-blue/5 p-8 rounded-xl mb-12">
                 <h3 className="text-2xl font-display font-bold mb-4 text-tribe-blue">Results & Impact</h3>

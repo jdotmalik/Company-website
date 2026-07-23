@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyIceCreamRoll = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const CaseStudyIceCreamRoll = () => {
         titleAccent="Ice Cream Roll:"
         title="A Delightful Dessert Simulation Game"
         tagline="Creating an Engaging, Visually Rich Dessert Simulation for Broad Audience Appeal"
-        images={['/lovable-uploads/0a80d8ac-9a2b-447d-9e61-23b6e38e5353.png']}
+        images={['/ice-cream-roll-hero/1.png', '/lovable-uploads/0a80d8ac-9a2b-447d-9e61-23b6e38e5353.png']}
         altPrefix="Ice Cream Roll"
       >
         <StoreBadges
@@ -49,6 +50,13 @@ const CaseStudyIceCreamRoll = () => {
                   Ice Cream Roll is a highly engaging, visually rich dessert simulation game that appeals to a broad audience—from kids to casual players. Built with Unity, it offers scalable and creative mobile gameplay where users can design desserts, experiment with ingredients, and enjoy hands-on play mechanics while ensuring monetization-ready performance.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/ice-cream-roll-content/project-overivew.webp"
+                alt="Ice Cream Roll project overview"
+                caption="Project overview — the Ice Cream Roll dessert simulation at a glance."
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-pink-50 to-pink-100 rounded-xl">
@@ -129,6 +137,13 @@ const CaseStudyIceCreamRoll = () => {
                 ))}
               </div>
 
+              <SectionShot
+                variant="left"
+                src="/ice-cream-roll-content/functionalites.webp"
+                alt="Ice Cream Roll functionalities"
+                caption="Core functionalities — dessert creation, decoration, and play mechanics."
+              />
+
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Implementation</h2>
 
               <div className="bg-earth-50 p-8 rounded-xl mb-12">
@@ -187,6 +202,13 @@ const CaseStudyIceCreamRoll = () => {
                   </div>
                 </div>
               </div>
+
+              <SectionShot
+                variant="right"
+                src="/ice-cream-roll-content/other-servicws.webp"
+                alt="Ice Cream Roll additional services"
+                caption="Additional services — supporting features and platform integrations."
+              />
 
               <div className="bg-gradient-to-r from-pink-100 to-purple-100 p-8 rounded-xl">
                 <h3 className="text-2xl font-display font-bold mb-4 text-pink-800">Player Feedback</h3>

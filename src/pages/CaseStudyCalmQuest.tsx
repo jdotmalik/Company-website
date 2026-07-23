@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreBadges from '@/components/StoreBadges';
 import CaseStudyHero from '@/components/CaseStudyHero';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyCalmQuest = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const CaseStudyCalmQuest = () => {
         titleAccent="Calm Quest:"
         title="A Journey Into Digital Serenity"
         tagline="Category: Health & Wellness, Casual Gaming | Platform: Android & iOS | Engine: Unity"
-        images={['/lovable-uploads/7c42af98-a63c-4803-9f4f-5932f2da099e.png']}
+        images={['/calm-quest-hero/1.png', '/lovable-uploads/7c42af98-a63c-4803-9f4f-5932f2da099e.png']}
         altPrefix="Calm Quest"
       >
         <StoreBadges
@@ -48,6 +49,13 @@ const CaseStudyCalmQuest = () => {
                   Calm Quest is an internally developed, immersive mobile wellness application that merges casual gaming with mindfulness. Designed using Unity, it features 15+ relaxing mini-games that offer sensory delight, calming interaction, and stress relief. From tactile pop-its to the soft rhythm of vegetable chopping, Calm Quest is a carefully crafted digital space for emotional decompression and daily tranquility.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/calm-quest-content/project-overview.webp"
+                alt="Calm Quest project overview"
+                caption="Project overview — Calm Quest at a glance."
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-pink-50 to-pink-100 rounded-xl">
@@ -87,6 +95,13 @@ const CaseStudyCalmQuest = () => {
                   <li><strong>Mindful progression</strong> - Gentle reward systems without addiction mechanics</li>
                 </ul>
               </div>
+
+              <SectionShot
+                variant="right"
+                src="/calm-quest-content/in-app-gameplay.webp"
+                alt="Calm Quest in-app gameplay"
+                caption="In-app gameplay — the calming interactions in action."
+              />
 
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Featured Mini-Games</h2>
 
@@ -138,6 +153,13 @@ const CaseStudyCalmQuest = () => {
                   </div>
                 ))}
               </div>
+
+              <SectionShot
+                variant="left"
+                src="/calm-quest-content/game-fearture.webp"
+                alt="Calm Quest game features"
+                caption="Game features — the mini-games that make up Calm Quest."
+              />
 
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Implementation</h2>
 
@@ -229,6 +251,13 @@ const CaseStudyCalmQuest = () => {
                 </p>
                 <p className="text-sm text-green-600 font-medium">- Alex Chen, Beta User & Mindfulness Advocate</p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/calm-quest-content/other-services.webp"
+                alt="Other Calm Quest services"
+                caption="Other services — the wider support behind Calm Quest's launch."
+              />
             </motion.div>
           </div>
         </div>

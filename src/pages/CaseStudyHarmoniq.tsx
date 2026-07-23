@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyHarmoniq = () => {
   useEffect(() => {
@@ -23,7 +24,14 @@ const CaseStudyHarmoniq = () => {
         titleAccent="Harmoniq:"
         title="From Lagging App to Scalable Product"
         tagline="How TTT Transformed a React Native iOS App Into a Modern, Future-Proof Platform"
-        images={['/lovable-uploads/ebc03188-4dc2-480f-a081-b9f1b76e6706.png']}
+        images={[
+          '/harmoniq-hero/1.png',
+          '/harmoniq-hero/2.png',
+          '/harmoniq-hero/3.png',
+          '/harmoniq-hero/4.png',
+          '/harmoniq-hero/5.png',
+          '/lovable-uploads/ebc03188-4dc2-480f-a081-b9f1b76e6706.png',
+        ]}
         altPrefix="Harmoniq"
       >
         <StoreBadges
@@ -48,6 +56,13 @@ const CaseStudyHarmoniq = () => {
                   What started as a small UI/UX tune-up became a full-system transformation—re-architected for speed, scale, and serious product growth.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/harmoniq-content/project-overview.webp"
+                alt="Harmoniq project overview"
+                caption="Project overview — the Harmoniq app transformation at a glance."
+              />
 
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">The Situation: Quick Fix? Not Quite.</h2>
 
@@ -111,6 +126,45 @@ const CaseStudyHarmoniq = () => {
                 <li><strong>Testing infrastructure</strong> - Established comprehensive testing to prevent future issues</li>
               </ul>
 
+              <div className="not-prose my-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                <SectionShot
+                  variant="pair"
+                  src="/harmoniq-content/functionalites-1.webp"
+                  alt="Harmoniq app functionality view 1"
+                  caption="Core app functionality after the rebuild."
+                />
+                <SectionShot
+                  variant="pair"
+                  className="md:mt-14"
+                  src="/harmoniq-content/functionalites-2.webp"
+                  alt="Harmoniq app functionality view 2"
+                  caption="Rebuilt screens with smoother transitions."
+                />
+              </div>
+
+              <SectionShot
+                variant="left"
+                src="/harmoniq-content/functionalites-3.webp"
+                alt="Harmoniq app functionality view 3"
+                caption="Modernized UI patterns across the app."
+              />
+
+              <div className="not-prose my-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                <SectionShot
+                  variant="pair"
+                  src="/harmoniq-content/functionalites-4.webp"
+                  alt="Harmoniq app functionality view 4"
+                  caption="Optimized flows built for scale."
+                />
+                <SectionShot
+                  variant="pair"
+                  className="md:mt-14"
+                  src="/harmoniq-content/functionalites5.webp"
+                  alt="Harmoniq app functionality view 5"
+                  caption="The finished, production-ready experience."
+                />
+              </div>
+
               <div className="bg-tribe-blue/5 p-8 rounded-xl mb-12">
                 <h3 className="text-2xl font-display font-bold mb-4 text-tribe-blue">Results</h3>
                 <div className="grid md:grid-cols-3 gap-6 text-center">
@@ -138,6 +192,29 @@ const CaseStudyHarmoniq = () => {
                   </span>
                 ))}
               </div>
+
+              <div className="not-prose my-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                <SectionShot
+                  variant="pair"
+                  src="/harmoniq-content/tech-stack-frontend.webp"
+                  alt="Harmoniq frontend tech stack"
+                  caption="Frontend stack powering the rebuilt app."
+                />
+                <SectionShot
+                  variant="pair"
+                  className="md:mt-14"
+                  src="/harmoniq-content/tech-stack-backend.webp"
+                  alt="Harmoniq backend tech stack"
+                  caption="Backend stack behind the modernized platform."
+                />
+              </div>
+
+              <SectionShot
+                variant="wide"
+                src="/harmoniq-content/deployment.webp"
+                alt="Harmoniq deployment pipeline"
+                caption="The deployment pipeline supporting continuous delivery."
+              />
             </motion.div>
           </div>
         </div>

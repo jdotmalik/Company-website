@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import CaseStudyHero from '@/components/CaseStudyHero';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudySnapPick = () => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const CaseStudySnapPick = () => {
         titleAccent="SnapPick:"
         title="Augmented Reality-Powered Warehouse Management"
         tagline="Internal Innovation Project: Revolutionizing Logistics with AR-Driven Navigation and Intelligent Picking Automation"
-        images={["/lovable-uploads/2d410c50-cc88-4056-89c1-a15f0460509f.png"]}
+        images={["/snappick-hero/1.png", "/lovable-uploads/2d410c50-cc88-4056-89c1-a15f0460509f.png"]}
         altPrefix="SnapPick"
       />
 
@@ -51,6 +52,13 @@ const CaseStudySnapPick = () => {
                   </div>
                 </div>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/snappick-content/project-overview.webp"
+                alt="SnapPick project overview"
+                caption="Project overview — the SnapPick AR warehouse platform at a glance."
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-blue-50 to-blue-100 rounded-xl">
@@ -145,6 +153,21 @@ const CaseStudySnapPick = () => {
                 ))}
               </div>
 
+              <div className="grid gap-6 md:grid-cols-2">
+                <SectionShot
+                  variant="pair"
+                  src="/snappick-content/functionalites-1.webp"
+                  alt="SnapPick core functionality — part 1"
+                  caption="Core functionality — AR-guided picking workflow."
+                />
+                <SectionShot
+                  variant="pair"
+                  src="/snappick-content/functionalites-2.webp"
+                  alt="SnapPick core functionality — part 2"
+                  caption="Core functionality — task management and monitoring."
+                />
+              </div>
+
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Architecture</h2>
 
               <div className="bg-earth-50 p-8 rounded-xl mb-12">
@@ -180,6 +203,21 @@ const CaseStudySnapPick = () => {
                     </ul>
                   </div>
                 </div>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 mb-12">
+                <SectionShot
+                  variant="pair"
+                  src="/snappick-content/tech-backend.webp"
+                  alt="SnapPick backend tech stack"
+                  caption="Backend tech stack — Node.js, PostgreSQL, Redis, and Socket.io."
+                />
+                <SectionShot
+                  variant="pair"
+                  src="/snappick-content/teck-front-end.webp"
+                  alt="SnapPick frontend tech stack"
+                  caption="Frontend tech stack — React Native AR app and admin portal."
+                />
               </div>
 
               <div className="bg-tribe-blue/5 p-8 rounded-xl mb-12">

@@ -8,8 +8,10 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreBadges from '@/components/StoreBadges';
 import CaseStudyHero from '@/components/CaseStudyHero';
+import SectionShot from '@/components/SectionShot';
 
 const SLIDER_IMAGES = [
+  "/lively-pencil-hero/1.png",
   "/lovable-uploads/eda53215-87db-46b6-9dc6-e564e4de3a33.png"
 ];
 
@@ -55,6 +57,13 @@ const CaseStudyLivelyPencil = () => {
                   But while the vision was strong, the frontend architecture was a bottleneck.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/lively-pencil-content/project-overview.webp"
+                alt="Lively Pencil project overview"
+                caption="Project overview — the Lively Pencil platform at a glance."
+              />
 
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">The Challenge</h2>
               
@@ -121,6 +130,13 @@ const CaseStudyLivelyPencil = () => {
                   </div>
                 ))}
               </div>
+
+              <SectionShot
+                variant="left"
+                src="/lively-pencil-content/functinlaites.webp"
+                alt="Lively Pencil functionalities"
+                caption="Key functionalities delivered across the rebuilt platform."
+              />
 
               <div className="bg-tribe-blue/5 p-8 rounded-xl mb-12">
                 <h3 className="text-2xl font-display font-bold mb-4 text-tribe-blue">Impact & Results</h3>

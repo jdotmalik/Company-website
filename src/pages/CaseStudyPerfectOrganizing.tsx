@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import StoreBadges from '@/components/StoreBadges';
 import CaseStudyHero from '@/components/CaseStudyHero';
+import SectionShot from '@/components/SectionShot';
 
 const CaseStudyPerfectOrganizing = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const CaseStudyPerfectOrganizing = () => {
         titleAccent="Perfect Organizing:"
         title="Calming Sorting & Puzzle Game"
         tagline="A Stress-Relieving Mobile Game Centered on Organizing, Sorting, and Mindful Activities"
-        images={['/lovable-uploads/e4002e94-9933-4886-a1d6-63e196bad607.png']}
+        images={['/perfect-organizing-hero/1.png', '/lovable-uploads/e4002e94-9933-4886-a1d6-63e196bad607.png']}
         altPrefix="Perfect Organizing"
       >
         <StoreBadges
@@ -48,6 +49,13 @@ const CaseStudyPerfectOrganizing = () => {
                   Perfect Organizing is a stress-relieving mobile game centered on organizing, sorting, and arranging tasks that engage users with simple yet satisfying gameplay. Designed to appeal to a wide demographic seeking calming, mindful activities on their devices, it delivers a smooth, intuitive experience that grows progressively challenging while maintaining a relaxing atmosphere.
                 </p>
               </div>
+
+              <SectionShot
+                variant="wide"
+                src="/perfect-organizing-content/project-overview.webp"
+                alt="Perfect Organizing project overview"
+                caption="Project overview — the calming sorting and puzzle experience at a glance."
+              />
 
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 <div className="text-center p-6 bg-gradient-to-b from-green-50 to-green-100 rounded-xl">
@@ -129,6 +137,13 @@ const CaseStudyPerfectOrganizing = () => {
                 ))}
               </div>
 
+              <SectionShot
+                variant="left"
+                src="/perfect-organizing-content/functionalites.webp"
+                alt="Perfect Organizing functionalities"
+                caption="Core functionality — sorting mini-games and intuitive controls in action."
+              />
+
               <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Technical Implementation</h2>
 
               <div className="bg-earth-50 p-8 rounded-xl mb-12">
@@ -187,6 +202,13 @@ const CaseStudyPerfectOrganizing = () => {
                   </div>
                 </div>
               </div>
+
+              <SectionShot
+                variant="right"
+                src="/perfect-organizing-content/other-services.webp"
+                alt="Other Perfect Organizing services and results"
+                caption="Results and related services delivered alongside the game."
+              />
 
               <div className="bg-gradient-to-r from-green-100 to-blue-100 p-8 rounded-xl">
                 <h3 className="text-2xl font-display font-bold mb-4 text-green-800">Player Testimonial</h3>
