@@ -1,12 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Gamepad2, Smartphone, Zap } from 'lucide-react';
+import { CheckCircle, Gamepad2, Smartphone, Zap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
 
 const CaseStudyIceCreamRoll = () => {
@@ -18,56 +18,20 @@ const CaseStudyIceCreamRoll = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Gamification
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Simulation
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Unity
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">Ice Cream Roll:</span> A Delightful Dessert Simulation Game
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-              Creating an Engaging, Visually Rich Dessert Simulation for Broad Audience Appeal
-            </p>
-
-            <StoreBadges
-              appStoreUrl="https://apps.apple.com/us/app/ice-cream-roll/id1499507396"
-              playStoreUrl="https://play.google.com/store/apps/details?id=com.luckykat.icecreamroll&hl=en"
-              className="mb-8"
-            />
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/0a80d8ac-9a2b-447d-9e61-23b6e38e5353.png"
-                alt="Ice Cream Roll Game"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['Gamification', 'Simulation', 'Unity']}
+        titleAccent="Ice Cream Roll:"
+        title="A Delightful Dessert Simulation Game"
+        tagline="Creating an Engaging, Visually Rich Dessert Simulation for Broad Audience Appeal"
+        images={['/lovable-uploads/0a80d8ac-9a2b-447d-9e61-23b6e38e5353.png']}
+        altPrefix="Ice Cream Roll"
+      >
+        <StoreBadges
+          appStoreUrl="https://apps.apple.com/us/app/ice-cream-roll/id1499507396"
+          playStoreUrl="https://play.google.com/store/apps/details?id=com.luckykat.icecreamroll&hl=en"
+          className="mb-8"
+        />
+      </CaseStudyHero>
 
       {/* Content Section */}
       <section className="py-16 bg-white">

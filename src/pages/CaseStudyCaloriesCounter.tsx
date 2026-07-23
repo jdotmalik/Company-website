@@ -1,12 +1,17 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, CheckCircle, Smartphone, Brain, Database } from 'lucide-react';
+import { ArrowRight, CheckCircle, Smartphone, Brain, Database } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
+
+const SLIDER_IMAGES = [
+  "/lovable-uploads/800ed702-a0aa-4553-877a-29a576fd7a09.png"
+];
 
 const CaseStudyCaloriesCounter = () => {
   useEffect(() => {
@@ -45,70 +50,14 @@ const CaseStudyCaloriesCounter = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
       
-      {/* Hero Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white relative overflow-hidden"
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-6"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:text-tribe-blue/80 transition-colors">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Trail Stories
-            </Link>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <span className="inline-block bg-tribe-blue/20 text-tribe-blue px-4 py-1.5 rounded-full text-sm font-medium mb-4">
-                Health & Wellness
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-                Calories Counter <span className="text-tribe-blue">Your Smart Guide to Food & Fitness</span>
-              </h1>
-              <p className="text-xl text-gray-300 mb-8">
-                AI-powered calorie tracking with personalized nutrition insights and recipe recommendations. 
-                A complete health companion built with cutting-edge technology.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {["React Native", "AI/ML", "Health", "Firebase"].map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-tribe-blue/20 text-tribe-blue rounded-full text-sm font-medium">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-              className="relative"
-            >
-              <div className="relative">
-                <ZoomableImage
-                  src="/lovable-uploads/800ed702-a0aa-4553-877a-29a576fd7a09.png"
-                  alt="Calories Counter App"
-                  className="w-full max-w-lg mx-auto rounded-xl shadow-2xl"
-                />
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-tribe-blue/20 rounded-full blur-xl"></div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-tribe-orange/20 rounded-full blur-xl"></div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
+      <CaseStudyHero
+        tags={["React Native", "AI/ML", "Health", "Firebase"]}
+        titleAccent="Calories Counter:"
+        title="Your Smart Guide to Food & Fitness"
+        tagline="AI-powered calorie tracking with personalized nutrition insights and recipe recommendations. A complete health companion built with cutting-edge technology."
+        images={SLIDER_IMAGES}
+        altPrefix="Calories Counter"
+      />
 
       {/* Project Overview */}
       <motion.section 

@@ -1,13 +1,13 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Puzzle, Heart, Zap } from 'lucide-react';
+import { CheckCircle, Puzzle, Heart, Zap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
 import StoreBadges from '@/components/StoreBadges';
+import CaseStudyHero from '@/components/CaseStudyHero';
 
 const CaseStudyPerfectOrganizing = () => {
   useEffect(() => {
@@ -18,55 +18,19 @@ const CaseStudyPerfectOrganizing = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Gamification
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Puzzle
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Relaxation
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">Perfect Organizing:</span> Calming Sorting & Puzzle Game
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-              A Stress-Relieving Mobile Game Centered on Organizing, Sorting, and Mindful Activities
-            </p>
-
-            <StoreBadges
-              playStoreUrl="https://play.google.com/store/apps/details?id=com.perfect.organizing.tidy.games&hl=en"
-              className="mb-8"
-            />
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/e4002e94-9933-4886-a1d6-63e196bad607.png"
-                alt="Perfect Organizing Game"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['Gamification', 'Puzzle', 'Relaxation']}
+        titleAccent="Perfect Organizing:"
+        title="Calming Sorting & Puzzle Game"
+        tagline="A Stress-Relieving Mobile Game Centered on Organizing, Sorting, and Mindful Activities"
+        images={['/lovable-uploads/e4002e94-9933-4886-a1d6-63e196bad607.png']}
+        altPrefix="Perfect Organizing"
+      >
+        <StoreBadges
+          playStoreUrl="https://play.google.com/store/apps/details?id=com.perfect.organizing.tidy.games&hl=en"
+          className="mb-8"
+        />
+      </CaseStudyHero>
 
       {/* Content Section */}
       <section className="py-16 bg-white">

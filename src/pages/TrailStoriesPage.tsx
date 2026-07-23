@@ -407,7 +407,55 @@ const caseStudies = [
 ];
 
 const categories = ["All", "Social Media", "AI", "Education", "Health & Wellness", "Food & Beverage", "E-commerce", "Gamification", "AR", "Sports", "PropTech", "Agency", "Design"];
-const platforms = ["All", "Mobile", "Web", "Game", "Design"];
+const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design"];
+
+// ---- Curated listing behaviour ----------------------------------------------
+// These lists are the source of truth for the listing (the `featured` flags in
+// the data above are ignored).
+
+// The ONLY projects shown as Featured, pre-arranged so each full desktop row
+// reads app | web | app:  T2C App / Masslos / Harmoniq, then Little Lingo /
+// Fundreef / Latte Delivery, with PPC Analytics Dashboard centered on row 3.
+const FEATURED_ORDER = [
+  "team2challenge",   // app
+  "masslos",          // web
+  "harmoniq",         // app
+  "little-lingo",     // app
+  "fundreef",         // web
+  "latte-delivery",   // app
+  "ringba-dashboard", // web — PPC Analytics Dashboard
+];
+const FEATURED_SLUGS = new Set(FEATURED_ORDER);
+
+// AI-powered projects: shown under the AI platform tab AND their home platform.
+const AI_SLUGS = new Set([
+  "fundreef", "renee", "thumbnail-ai",                 // web + AI
+  "nexiun-app", "little-dreams", "calories-counter",   // app + AI
+]);
+
+// Everything after the featured block: big projects with a live link first,
+// then the remaining products and design showcases, e-commerce stores last.
+const AFTER_FEATURED_ORDER = [
+  // Live web platforms
+  "rentigo", "renee", "exre", "thumbnail-ai", "team2challenge-web", "spotify-to-apple-music",
+  // Apps & games with store links
+  "calm-quest", "divine-duelists", "ice-cream-roll", "perfect-organizing", "lively-pencil",
+  // Remaining products
+  "talkie-totz", "little-dreams", "calories-counter", "snappick", "lume-reader", "nexiun-app",
+  // Design showcases
+  "team2challenge-design", "harmoniq-design", "split-trip-design", "talkietotz-design", "neolohn-design",
+  // E-commerce last
+  "avenir", "dani", "freecer", "venlushop",
+];
+
+const displayRank = (slug: string): number => {
+  const featuredIdx = FEATURED_ORDER.indexOf(slug);
+  if (featuredIdx !== -1) return featuredIdx;
+  const restIdx = AFTER_FEATURED_ORDER.indexOf(slug);
+  return restIdx !== -1
+    ? FEATURED_ORDER.length + restIdx
+    : FEATURED_ORDER.length + AFTER_FEATURED_ORDER.length;
+};
 
 const techTags = [
   "React Native", "Flutter", "Next.js 15", "Next.js", "Laravel 10", "Laravel",
@@ -455,9 +503,13 @@ const TrailStoriesPage = () => {
         }
       }
 
-      // Filter by platform
-      if (activePlatform !== "All" && study.category !== activePlatform) {
-        return false;
+      // Filter by platform. AI projects belong to the AI tab AND their home
+      // platform (Mobile/Web), so they appear in both.
+      if (activePlatform !== "All") {
+        const matchesPlatform =
+          study.category === activePlatform ||
+          (activePlatform === "AI" && AI_SLUGS.has(study.slug));
+        if (!matchesPlatform) return false;
       }
 
       // Filter by industry (we reuse tags for industry mapping in some cases, or just specific grouping)
@@ -474,14 +526,15 @@ const TrailStoriesPage = () => {
       }
 
       // Filter by featured status
-      if (featuredOnly && !study.featured) {
+      if (featuredOnly && !FEATURED_SLUGS.has(study.slug)) {
         return false;
       }
 
       return true;
     })
-    // Featured projects lead, everything else follows alphabetically.
-    .sort((a, b) => Number(b.featured) - Number(a.featured) || a.title.localeCompare(b.title));
+    // Curated order: featured block (app | web | app rows), then big projects
+    // with live links, remaining products, design showcases, e-commerce last.
+    .sort((a, b) => displayRank(a.slug) - displayRank(b.slug));
 
   const toggleTag = (tag: string) => {
     if (activeTags.includes(tag)) {
@@ -834,7 +887,11 @@ const TrailStoriesPage = () => {
                     scale: 1.03,
                     transition: { duration: 0.3 }
                   }}
-                  className="group cursor-pointer relative"
+                  className={cn(
+                    "group cursor-pointer relative",
+                    // Center the lone 7th featured card (PPC Dashboard) on desktop row 3.
+                    index === 6 && study.slug === FEATURED_ORDER[6] && "lg:col-start-2"
+                  )}
                 >
                   <Link to={`/case-study/${study.slug}`}>
                     <div className="bg-gradient-to-b from-white via-earth-50 to-white rounded-3xl shadow-lg overflow-hidden border border-gray-200/60 h-full flex flex-col relative backdrop-blur-sm hover:shadow-2xl hover:shadow-tribe-blue/15 hover:border-tribe-blue/40 transition-all duration-500">
@@ -846,7 +903,7 @@ const TrailStoriesPage = () => {
                         {/* Decorative corner accent */}
                         <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-tribe-blue/10 to-transparent rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        {study.featured && (
+                        {FEATURED_SLUGS.has(study.slug) && (
                           <motion.div
                             initial={{ scale: 0, rotate: -180 }}
                             whileInView={{ scale: 1, rotate: 0 }}

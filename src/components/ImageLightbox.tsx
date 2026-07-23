@@ -18,9 +18,10 @@ interface ImageLightboxProps {
 
 /**
  * Full-screen image viewer with zoom. Controlled via `index` (null = closed).
- * Zoom in/out with the +/- buttons, the scroll wheel, or double-click; drag to
- * pan once zoomed. Esc closes, arrow keys navigate. Rendered through a portal
- * so transformed/overflow-hidden ancestors can never clip or trap it.
+ * Single-tap the image to zoom in a step; double-tap to zoom back out. The
+ * +/- buttons, scroll wheel and keyboard still work; drag to pan once zoomed.
+ * Esc closes, arrow keys navigate. Rendered through a portal so transformed /
+ * overflow-hidden ancestors can never clip or trap it.
  */
 const ImageLightbox = ({ images, index, onClose, onNavigate, altPrefix = 'Image' }: ImageLightboxProps) => {
     const isOpen = index !== null && index >= 0 && index < images.length;
@@ -30,6 +31,10 @@ const ImageLightbox = ({ images, index, onClose, onNavigate, altPrefix = 'Image'
     const [offset, setOffset] = useState({ x: 0, y: 0 });
     const dragState = useRef<{ startX: number; startY: number; originX: number; originY: number } | null>(null);
     const [isDragging, setIsDragging] = useState(false);
+    /** Pending single-tap timer — lets us tell a tap apart from a double tap. */
+    const singleTapTimer = useRef<number | null>(null);
+    /** Set while a pointer-drag pans the image, so the click on release isn't a tap. */
+    const didPan = useRef(false);
 
     const resetView = useCallback(() => {
         setZoom(1);
@@ -44,9 +49,15 @@ const ImageLightbox = ({ images, index, onClose, onNavigate, altPrefix = 'Image'
         });
     }, []);
 
-    // Reset zoom whenever the viewer opens or switches image.
+    // Reset zoom whenever the viewer opens or switches image; drop any pending tap.
     useEffect(() => {
         resetView();
+        return () => {
+            if (singleTapTimer.current !== null) {
+                window.clearTimeout(singleTapTimer.current);
+                singleTapTimer.current = null;
+            }
+        };
     }, [index, resetView]);
 
     useEffect(() => {
@@ -98,6 +109,9 @@ const ImageLightbox = ({ images, index, onClose, onNavigate, altPrefix = 'Image'
     const onPointerMove = (e: React.PointerEvent) => {
         const d = dragState.current;
         if (!d) return;
+        if (Math.abs(e.clientX - d.startX) + Math.abs(e.clientY - d.startY) > 4) {
+            didPan.current = true;
+        }
         setOffset({ x: d.originX + (e.clientX - d.startX), y: d.originY + (e.clientY - d.startY) });
     };
 
@@ -170,11 +184,27 @@ const ImageLightbox = ({ images, index, onClose, onNavigate, altPrefix = 'Image'
                 key={index}
                 src={images[index as number]}
                 alt={`${altPrefix} ${(index as number) + 1}`}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    // The click fired on releasing a pan — not a tap.
+                    if (didPan.current) {
+                        didPan.current = false;
+                        return;
+                    }
+                    // Already waiting? This click is the second half of a double tap.
+                    if (singleTapTimer.current !== null) return;
+                    singleTapTimer.current = window.setTimeout(() => {
+                        singleTapTimer.current = null;
+                        zoomBy(STEP); // single tap -> zoom in a step
+                    }, 280);
+                }}
                 onDoubleClick={(e) => {
                     e.stopPropagation();
-                    if (zoom > 1) resetView();
-                    else setZoom(2);
+                    if (singleTapTimer.current !== null) {
+                        window.clearTimeout(singleTapTimer.current);
+                        singleTapTimer.current = null;
+                    }
+                    resetView(); // double tap -> zoom back out
                 }}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}

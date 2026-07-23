@@ -1,12 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Globe, Users, BookOpen } from 'lucide-react';
+import { CheckCircle, Globe, Users, BookOpen } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
 
 const CaseStudyLittleLingo = () => {
@@ -18,56 +18,20 @@ const CaseStudyLittleLingo = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Education
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Language Learning
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Mobile App
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">Little Lingo:</span> Language Learning That Grows With Kids
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-              How TTT Revamped a Buggy Codebase into a Vibrant, Multilingual EdTech Platform
-            </p>
-
-            <StoreBadges
-              appStoreUrl="https://apps.apple.com/us/app/littlelingo-kids-flashcards/id1667625368"
-              playStoreUrl="https://play.google.com/store/apps/details?id=com.mycleverbear&hl=en"
-              className="mb-8"
-            />
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/ede72a27-07fd-482a-8246-02db292f3af7.png"
-                alt="Little Lingo App"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['Education', 'Language Learning', 'Mobile App']}
+        titleAccent="Little Lingo:"
+        title="Language Learning That Grows With Kids"
+        tagline="How TTT Revamped a Buggy Codebase into a Vibrant, Multilingual EdTech Platform"
+        images={['/lovable-uploads/ede72a27-07fd-482a-8246-02db292f3af7.png']}
+        altPrefix="Little Lingo"
+      >
+        <StoreBadges
+          appStoreUrl="https://apps.apple.com/us/app/littlelingo-kids-flashcards/id1667625368"
+          playStoreUrl="https://play.google.com/store/apps/details?id=com.mycleverbear&hl=en"
+          className="mb-8"
+        />
+      </CaseStudyHero>
 
       {/* Content Section */}
       <section className="py-16 bg-white">

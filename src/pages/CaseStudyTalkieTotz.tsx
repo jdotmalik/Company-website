@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowLeft, ExternalLink, Calendar, Users, Smartphone, Code, Database, Settings, BarChart3 } from 'lucide-react';
+import { ExternalLink, Calendar, Users, Smartphone, Code, Database, Settings, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 import ZoomableImage from '@/components/ZoomableImage';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import CaseStudyHero from '@/components/CaseStudyHero';
+
+const SLIDER_IMAGES = [
+  "/lovable-uploads/826c450a-5486-4505-a9cd-ab9a1726fb62.png"
+];
 
 const CaseStudyTalkieTotz = () => {
   const fadeInUp = {
@@ -28,49 +33,14 @@ const CaseStudyTalkieTotz = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-earth-900 via-earth-800 to-earth-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/lovable-uploads/826c450a-5486-4505-a9cd-ab9a1726fb62.png')] opacity-10 bg-cover bg-center"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
-          >
-            <Link to="/trail-stories">
-              <Button variant="ghost" className="mb-6 text-white hover:bg-white/10">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Trail Stories
-              </Button>
-            </Link>
-            
-            <div className="flex flex-wrap gap-3 mb-6">
-              <span className="px-3 py-1 bg-tribe-blue/20 text-tribe-blue rounded-full text-sm font-medium">
-                Education
-              </span>
-              <span className="px-3 py-1 bg-tribe-blue/20 text-tribe-blue rounded-full text-sm font-medium">
-                Parenting
-              </span>
-              <span className="px-3 py-1 bg-tribe-blue/20 text-tribe-blue rounded-full text-sm font-medium">
-                EdTech
-              </span>
-            </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-              TalkieTotz Educational App
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl">
-              Launching a Lesson-Based App for Parents: From Figma to Functional MVP
-            </p>
-            
-            <p className="text-lg text-gray-300 max-w-2xl">
-              A founder's idea. A beautifully designed prototype. A launch-ready product—engineered and deployed end-to-end by TTT.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['Education', 'Parenting', 'EdTech']}
+        titleAccent="TalkieTotz:"
+        title="Educational App"
+        tagline="Launching a Lesson-Based App for Parents: From Figma to Functional MVP"
+        images={SLIDER_IMAGES}
+        altPrefix="TalkieTotz"
+      />
 
       {/* Project Overview */}
       <section className="py-16 bg-white">

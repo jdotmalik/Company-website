@@ -1,12 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Smartphone, MapPin, BarChart3 } from 'lucide-react';
+import { CheckCircle, Smartphone, MapPin, BarChart3 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
 
 const CaseStudySnapPick = () => {
   useEffect(() => {
@@ -17,50 +17,14 @@ const CaseStudySnapPick = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                AR/VR
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Logistics
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Mobile App
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">SnapPick:</span> Augmented Reality-Powered Warehouse Management
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Internal Innovation Project: Revolutionizing Logistics with AR-Driven Navigation and Intelligent Picking Automation
-            </p>
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/2d410c50-cc88-4056-89c1-a15f0460509f.png"
-                alt="SnapPick AR Warehouse App"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['AR/VR', 'Logistics', 'Mobile App']}
+        titleAccent="SnapPick:"
+        title="Augmented Reality-Powered Warehouse Management"
+        tagline="Internal Innovation Project: Revolutionizing Logistics with AR-Driven Navigation and Intelligent Picking Automation"
+        images={["/lovable-uploads/2d410c50-cc88-4056-89c1-a15f0460509f.png"]}
+        altPrefix="SnapPick"
+      />
 
       {/* Content Section */}
       <section className="py-16 bg-white">

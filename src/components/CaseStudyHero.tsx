@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import {
     motion,
     AnimatePresence,
@@ -39,6 +39,8 @@ interface CaseStudyHeroProps {
     /** Label for the visit button (e.g. "Visit avenir.pk"). */
     urlLabel?: string;
     autoPlayMs?: number;
+    /** Optional extra hero content (e.g. store badges), rendered after the tagline. */
+    children?: ReactNode;
 }
 
 /**
@@ -55,6 +57,7 @@ const CaseStudyHero = ({
     url,
     urlLabel,
     autoPlayMs = 5000,
+    children,
 }: CaseStudyHeroProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -167,6 +170,8 @@ const CaseStudyHero = ({
                     >
                         {tagline}
                     </motion.p>
+
+                    {children && <motion.div variants={item}>{children}</motion.div>}
 
                     {url && urlLabel && (
                         <motion.div variants={item}>

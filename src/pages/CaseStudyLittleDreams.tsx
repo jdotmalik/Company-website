@@ -1,12 +1,12 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, Brain, Zap, Shield } from 'lucide-react';
+import { CheckCircle, Brain, Zap, Shield } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
 
 const CaseStudyLittleDreams = () => {
   useEffect(() => {
@@ -17,50 +17,14 @@ const CaseStudyLittleDreams = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                AI/ML
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Mobile App
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Storytelling
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">Little Dreams:</span> AI-Powered Bedtime Magic
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              How TTT Engineered a Personalized Storytelling App That Scales Imagination and Revenue
-            </p>
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/f6b70bdc-127d-42e9-979e-4de34287c471.png"
-                alt="Little Dreams App"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['AI/ML', 'Mobile App', 'Storytelling']}
+        titleAccent="Little Dreams:"
+        title="AI-Powered Bedtime Magic"
+        tagline="How TTT Engineered a Personalized Storytelling App That Scales Imagination and Revenue"
+        images={['/lovable-uploads/f6b70bdc-127d-42e9-979e-4de34287c471.png']}
+        altPrefix="Little Dreams"
+      />
 
       {/* Content Section */}
       <section className="py-16 bg-white">

@@ -1,12 +1,12 @@
 
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import ZoomableImage from '@/components/ZoomableImage';
+import CaseStudyHero from '@/components/CaseStudyHero';
 import StoreBadges from '@/components/StoreBadges';
 
 const CaseStudyHarmoniq = () => {
@@ -18,55 +18,19 @@ const CaseStudyHarmoniq = () => {
     <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-earth-900 to-earth-800 text-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto"
-          >
-            <Link to="/trail-stories" className="inline-flex items-center text-tribe-blue hover:underline mb-6">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Social Media
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                React Native
-              </span>
-              <span className="px-3 py-1 rounded-full bg-tribe-blue/20 text-tribe-blue text-sm font-medium">
-                Performance Optimization
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-tight mb-6">
-              <span className="text-tribe-blue">Harmoniq:</span> From Lagging App to Scalable Product
-            </h1>
-
-            <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-              How TTT Transformed a React Native iOS App Into a Modern, Future-Proof Platform
-            </p>
-
-            <StoreBadges
-              appStoreUrl="https://apps.apple.com/us/app/harmoniq-music/id6468933926"
-              className="mb-8"
-            />
-
-            <div className="relative h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-              <ZoomableImage
-                src="/lovable-uploads/ebc03188-4dc2-480f-a081-b9f1b76e6706.png"
-                alt="Harmoniq App"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CaseStudyHero
+        tags={['Social Media', 'React Native', 'Performance Optimization']}
+        titleAccent="Harmoniq:"
+        title="From Lagging App to Scalable Product"
+        tagline="How TTT Transformed a React Native iOS App Into a Modern, Future-Proof Platform"
+        images={['/lovable-uploads/ebc03188-4dc2-480f-a081-b9f1b76e6706.png']}
+        altPrefix="Harmoniq"
+      >
+        <StoreBadges
+          appStoreUrl="https://apps.apple.com/us/app/harmoniq-music/id6468933926"
+          className="mb-8"
+        />
+      </CaseStudyHero>
 
       {/* Content Section */}
       <section className="py-16 bg-white">
