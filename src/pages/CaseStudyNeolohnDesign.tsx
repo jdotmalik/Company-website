@@ -128,21 +128,48 @@ const CaseStudyNeolohnDesign = () => {
                                 <h3 className="text-xl font-bold text-tribe-blue mb-4 text-center italic">"Simplicity is the ultimate sophistication — even a dense payroll dashboard can feel effortless."</h3>
                             </div>
 
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                className="rounded-2xl overflow-hidden shadow-xl mb-12 border border-earth-100"
-                            >
-                                <ZoomableImage
-                                    src="/neolohn-content/5.webp"
-                                    alt="NEOLOHN employee list, filters, and duty roster"
-                                    className="w-full h-auto object-cover"
-                                />
-                                <div className="p-4 bg-earth-50 text-center text-sm text-earth-500 font-medium italic">
-                                    The employee list, filters, and duty roster — stripped to what matters.
+                            {/* Before & After — the transformation, shown right where the story earns it */}
+                            <div className="not-prose mb-12">
+                                <div className="text-center mb-12 max-w-2xl mx-auto">
+                                    <span className="inline-block px-3 py-1 rounded-full bg-tribe-blue/10 text-tribe-blue text-sm font-bold mb-4">
+                                        The Transformation
+                                    </span>
+                                    <h3 className="text-3xl md:text-4xl font-display font-bold mb-4 text-earth-900">
+                                        Before &amp; After
+                                    </h3>
+                                    <p className="text-earth-600 text-lg leading-relaxed">
+                                        The same workflows, reimagined. On the left, the legacy interface — dense, blue, and heavy. On the right, NEOLOHN — the same data, made calm.
+                                    </p>
                                 </div>
-                            </motion.div>
+
+                                <div className="space-y-10">
+                                    {beforeAfter.map((shot, idx) => (
+                                        <motion.figure
+                                            key={shot.src}
+                                            initial={{ opacity: 0, y: 24 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, margin: "-80px" }}
+                                            transition={{ duration: 0.5 }}
+                                            className="rounded-2xl overflow-hidden shadow-xl border border-earth-100 bg-white"
+                                        >
+                                            <ZoomableImage
+                                                src={shot.src}
+                                                alt={shot.alt}
+                                                loading="lazy"
+                                                className="w-full h-auto object-cover"
+                                            />
+                                            <figcaption className="flex items-center gap-3 p-4 md:p-5 border-t border-earth-100">
+                                                <span className="text-xs font-bold text-tribe-blue bg-tribe-blue/10 px-2.5 py-1 rounded-md tabular-nums">
+                                                    {String(idx + 1).padStart(2, '0')}
+                                                </span>
+                                                <span className="text-sm md:text-base font-medium text-earth-700">
+                                                    {shot.caption}
+                                                </span>
+                                            </figcaption>
+                                        </motion.figure>
+                                    ))}
+                                </div>
+                            </div>
 
                             <p className="mb-12">
                                 The result is an interface that feels obvious in hindsight — the hallmark of great minimalist design. Managers, HR staff, payroll teams, and shift planners move through the product without friction because there's simply nothing extra in the way. Every screen answers one question, clearly, and then gets out of the way.
@@ -155,22 +182,6 @@ const CaseStudyNeolohnDesign = () => {
                                         NEOLOHN keeps a single, consistent structure across the whole product: a persistent left sidebar for company context, month selection, employee search, the employee list, filters, and actions — paired with a top navigation for every major module. Learn one screen and you've learned them all.
                                     </p>
                                 </section>
-
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.95 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    className="rounded-2xl overflow-hidden shadow-xl border border-earth-100"
-                                >
-                                    <ZoomableImage
-                                        src="/neolohn-content/6.webp"
-                                        alt="NEOLOHN monochrome dashboard with a single accent"
-                                        className="w-full h-auto object-cover"
-                                    />
-                                    <div className="p-4 bg-earth-50 text-center text-sm text-earth-500 font-medium italic">
-                                        A monochrome canvas with a single, purposeful accent — Café Milliways in view.
-                                    </div>
-                                </motion.div>
 
                                 <section>
                                     <h3 className="text-2xl font-display font-bold mb-6 text-earth-900">A Disciplined Design System</h3>
@@ -225,53 +236,6 @@ const CaseStudyNeolohnDesign = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Before & After */}
-            <section className="py-24 bg-earth-50 border-t border-earth-100">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-16 max-w-2xl mx-auto">
-                            <span className="inline-block px-3 py-1 rounded-full bg-tribe-blue/10 text-tribe-blue text-sm font-bold mb-4">
-                                The Transformation
-                            </span>
-                            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-earth-900">
-                                Before &amp; After
-                            </h2>
-                            <p className="text-earth-600 text-lg leading-relaxed">
-                                The same workflows, reimagined. On the left, the legacy interface — dense, blue, and heavy. On the right, NEOLOHN — the same data, made calm.
-                            </p>
-                        </div>
-
-                        <div className="space-y-10">
-                            {beforeAfter.map((shot, idx) => (
-                                <motion.figure
-                                    key={shot.src}
-                                    initial={{ opacity: 0, y: 24 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-80px" }}
-                                    transition={{ duration: 0.5 }}
-                                    className="rounded-2xl overflow-hidden shadow-xl border border-earth-100 bg-white"
-                                >
-                                    <ZoomableImage
-                                        src={shot.src}
-                                        alt={shot.alt}
-                                        loading="lazy"
-                                        className="w-full h-auto object-cover"
-                                    />
-                                    <figcaption className="flex items-center gap-3 p-4 md:p-5 border-t border-earth-100">
-                                        <span className="text-xs font-bold text-tribe-blue bg-tribe-blue/10 px-2.5 py-1 rounded-md tabular-nums">
-                                            {String(idx + 1).padStart(2, '0')}
-                                        </span>
-                                        <span className="text-sm md:text-base font-medium text-earth-700">
-                                            {shot.caption}
-                                        </span>
-                                    </figcaption>
-                                </motion.figure>
-                            ))}
                         </div>
                     </div>
                 </div>
