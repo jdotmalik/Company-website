@@ -16,7 +16,7 @@ const SLIDER_IMAGES = [
     "/lume reader/4.png",
     "/lume reader/6.png",
     "/lume reader/8.png",
-    "/lume reader/10.png",
+    "/lume reader/4.png",
     "/lume reader/12.png",
     "/lume reader/14.png",
     "/lume reader/16.png"
