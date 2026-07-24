@@ -24,7 +24,7 @@ import CaseStudyHero from '@/components/CaseStudyHero';
 import ReadingProgress from '@/components/ReadingProgress';
 import Reveal, { revealContainer, revealItem } from '@/components/Reveal';
 
-const SLIDER_IMAGES = ['/nexiun-app/main.png'];
+const SLIDER_IMAGES = ['/nexiun-app-hero/1.png', '/nexiun-app-hero/2.png', '/nexiun-app-hero/3.png', '/nexiun-app-hero/4.png', '/nexiun-app-hero/5.png', '/nexiun-app-hero/6.png', '/nexiun-app-hero/7.png', '/nexiun-app-hero/8.png', '/nexiun-app-hero/9.png', '/nexiun-app-hero/10.png'];
 
 const AI_FEATURES = [
     {

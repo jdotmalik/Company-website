@@ -24,7 +24,7 @@ const CaseStudyDivineDuelists = () => {
         titleAccent="Divine Duelists:"
         title="Strategy Meets Power"
         tagline="Category: Strategy, RPG, Card Game | Platform: Android & iOS | Engine: Unity"
-        images={['/divine-duelists-hero/1.png', '/lovable-uploads/6d4bd372-b964-406e-9f75-bbebf64cc458.png']}
+        images={['/divine-duelists-hero/1.png', '/divine-duelists-hero/2.png', '/divine-duelists-hero/3.png', '/divine-duelists-hero/4.png', '/divine-duelists-hero/5.png']}
         altPrefix="Divine Duelists"
       >
         <StoreBadges

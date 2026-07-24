@@ -23,7 +23,7 @@ const CaseStudySnapPick = () => {
         titleAccent="SnapPick:"
         title="Augmented Reality-Powered Warehouse Management"
         tagline="Internal Innovation Project: Revolutionizing Logistics with AR-Driven Navigation and Intelligent Picking Automation"
-        images={["/snappick-hero/1.png", "/lovable-uploads/2d410c50-cc88-4056-89c1-a15f0460509f.png"]}
+        images={["/snappick-hero/1.png", "/snappick-hero/2.png", "/snappick-hero/3.png", "/snappick-hero/4.png", "/snappick-hero/5.png", "/snappick-hero/6.png"]}
         altPrefix="SnapPick"
       />
 

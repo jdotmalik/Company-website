@@ -24,7 +24,7 @@ const CaseStudyCalmQuest = () => {
         titleAccent="Calm Quest:"
         title="A Journey Into Digital Serenity"
         tagline="Category: Health & Wellness, Casual Gaming | Platform: Android & iOS | Engine: Unity"
-        images={['/calm-quest-hero/1.png', '/lovable-uploads/7c42af98-a63c-4803-9f4f-5932f2da099e.png']}
+        images={['/calm-quest-hero/1.png', '/calm-quest-hero/2.png', '/calm-quest-hero/3.png', '/calm-quest-hero/4.png', '/calm-quest-hero/5.png']}
         altPrefix="Calm Quest"
       >
         <StoreBadges

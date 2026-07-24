@@ -12,7 +12,8 @@ import SectionShot from '@/components/SectionShot';
 
 const SLIDER_IMAGES = [
   "/lively-pencil-hero/1.png",
-  "/lovable-uploads/eda53215-87db-46b6-9dc6-e564e4de3a33.png"
+  "/lively-pencil-hero/2.png",
+  "/lively-pencil-hero/3.png"
 ];
 
 const CaseStudyLivelyPencil = () => {

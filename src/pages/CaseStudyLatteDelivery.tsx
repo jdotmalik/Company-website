@@ -63,7 +63,7 @@ const CaseStudyLatteDelivery = () => {
         titleAccent="Latte Delivery:"
         title="End-to-End Food Delivery Ecosystem"
         tagline="Complete multi-app platform with real-time tracking and seamless vendor management. A comprehensive food delivery solution built for scalability."
-        images={['/lovable-uploads/7ee4e9e3-9210-4950-a3cc-ed8e05e2e10a.png']}
+        images={['/latte-delivery-hero/1.png', '/latte-delivery-hero/2.png', '/latte-delivery-hero/3.png', '/latte-delivery-hero/4.png', '/latte-delivery-hero/5.png']}
         altPrefix="Latte Delivery"
       >
         <StoreBadges

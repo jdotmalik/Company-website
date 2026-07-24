@@ -24,7 +24,7 @@ const CaseStudyPerfectOrganizing = () => {
         titleAccent="Perfect Organizing:"
         title="Calming Sorting & Puzzle Game"
         tagline="A Stress-Relieving Mobile Game Centered on Organizing, Sorting, and Mindful Activities"
-        images={['/perfect-organizing-hero/1.png', '/lovable-uploads/e4002e94-9933-4886-a1d6-63e196bad607.png']}
+        images={['/perfect-organizing-hero/1.png', '/perfect-organizing-hero/2.png', '/perfect-organizing-hero/3.png', '/perfect-organizing-hero/4.png']}
         altPrefix="Perfect Organizing"
       >
         <StoreBadges

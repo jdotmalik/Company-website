@@ -24,7 +24,7 @@ const CaseStudyLittleLingo = () => {
         titleAccent="Little Lingo:"
         title="Language Learning That Grows With Kids"
         tagline="How TTT Revamped a Buggy Codebase into a Vibrant, Multilingual EdTech Platform"
-        images={['/little-lingo-hero/1.png', '/lovable-uploads/ede72a27-07fd-482a-8246-02db292f3af7.png']}
+        images={['/little-lingo-hero/1.png', '/little-lingo-hero/2.png', '/little-lingo-hero/3.png', '/little-lingo-hero/4.png', '/little-lingo-hero/5.png', '/little-lingo-hero/6.png', '/little-lingo-hero/7.png']}
         altPrefix="Little Lingo"
       >
         <StoreBadges

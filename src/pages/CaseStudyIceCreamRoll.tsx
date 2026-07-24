@@ -24,7 +24,7 @@ const CaseStudyIceCreamRoll = () => {
         titleAccent="Ice Cream Roll:"
         title="A Delightful Dessert Simulation Game"
         tagline="Creating an Engaging, Visually Rich Dessert Simulation for Broad Audience Appeal"
-        images={['/ice-cream-roll-hero/1.png', '/lovable-uploads/0a80d8ac-9a2b-447d-9e61-23b6e38e5353.png']}
+        images={['/ice-cream-roll-hero/1.png', '/ice-cream-roll-hero/2.png', '/ice-cream-roll-hero/3.png', '/ice-cream-roll-hero/4.png']}
         altPrefix="Ice Cream Roll"
       >
         <StoreBadges
