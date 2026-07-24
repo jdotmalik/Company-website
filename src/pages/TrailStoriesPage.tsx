@@ -415,14 +415,14 @@ const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design"];
 
 // The ONLY projects shown as Featured, pre-arranged so each full desktop row
 // reads app | web | app. Web order: PPC Dashboard, Masslos, Fundreef.
-// Row 1: Harmoniq / PPC / Little Lingo · Row 2: T2C App / Masslos / Latte
+// Row 1: Harmoniq / PPC / Little Lingo · Row 2: Rentigo / Masslos / Latte
 // Delivery · Row 3 starts with Fundreef and the rest of the listing flows in
 // right after it (no empty cells).
 const FEATURED_ORDER = [
   "harmoniq",         // app
   "ringba-dashboard", // web — PPC Analytics Dashboard
   "little-lingo",     // app
-  "team2challenge",   // app — T2C Mobile
+  "rentigo",          // web — Rentigo (replaced T2C Mobile)
   "masslos",          // web
   "latte-delivery",   // app
   "fundreef",         // web
@@ -439,11 +439,11 @@ const AI_SLUGS = new Set([
 // then the remaining products and design showcases, e-commerce stores last.
 const AFTER_FEATURED_ORDER = [
   // Live web platforms
-  "rentigo", "renee", "exre", "thumbnail-ai", "team2challenge-web", "spotify-to-apple-music",
+  "renee", "exre", "thumbnail-ai", "team2challenge-web", "spotify-to-apple-music",
   // Apps & games with store links
   "calm-quest", "divine-duelists", "ice-cream-roll", "perfect-organizing", "lively-pencil",
   // Remaining products
-  "talkie-totz", "little-dreams", "calories-counter", "snappick", "lume-reader", "nexiun-app",
+  "team2challenge", "talkie-totz", "little-dreams", "calories-counter", "snappick", "lume-reader", "nexiun-app",
   // Design showcases
   "team2challenge-design", "harmoniq-design", "split-trip-design", "talkietotz-design", "neolohn-design",
   // E-commerce last
