@@ -415,13 +415,13 @@ const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design"];
 
 // The ONLY projects shown as Featured, pre-arranged so each full desktop row
 // reads app | web | app. Web order: PPC Dashboard, Masslos, Fundreef.
-// Row 1: T2C App / PPC / Harmoniq · Row 2: Little Lingo / Masslos / Latte
+// Row 1: Harmoniq / PPC / T2C App · Row 2: Little Lingo / Masslos / Latte
 // Delivery · Row 3 starts with Fundreef and the rest of the listing flows in
 // right after it (no empty cells).
 const FEATURED_ORDER = [
-  "team2challenge",   // app
-  "ringba-dashboard", // web — PPC Analytics Dashboard
   "harmoniq",         // app
+  "ringba-dashboard", // web — PPC Analytics Dashboard
+  "team2challenge",   // app — T2C Mobile
   "little-lingo",     // app
   "masslos",          // web
   "latte-delivery",   // app
