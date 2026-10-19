@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Filter, Layout, Code2, Zap, Sparkles, ChevronDown, ChevronUp, Settings2, TrendingUp, Search, X } from 'lucide-react';
+import { ArrowRight, Filter, Layout, Code2, Zap, Sparkles, ChevronDown, ChevronUp, Settings2, TrendingUp, Search, X, ShieldCheck } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -403,11 +403,39 @@ const caseStudies = [
     textColor: "text-tribe-blue",
     featured: false,
     slug: "neolohn-design"
+  },
+  {
+    id: 201,
+    title: "ClickUp → Freshdesk",
+    category: "Audit",
+    description: "Serverless Integration & Architecture Audit: an independent review of a ClickUp webhook → Vercel → Freshdesk API v2 sync, with hardening steps and operational runbooks.",
+    image: "/clickup-freshdesk-hero/1.webp",
+    tags: ["Audit", "Serverless", "Security", "Integration", "Vercel"],
+    color: "bg-tribe-blue/10",
+    textColor: "text-tribe-blue",
+    featured: false,
+    slug: "clickup-freshdesk"
+  },
+  {
+    id: 202,
+    title: "Express DJ",
+    category: "Audit",
+    description: "Full-Stack Audit: performance, load, security, code, and accessibility review of a Laravel DJ & talent booking platform, delivered as a graded scorecard and roadmap.",
+    image: "/express-dj-hero/1.webp",
+    tags: ["Audit", "Laravel", "Performance Optimization", "Security", "Accessibility"],
+    color: "bg-tribe-blue/10",
+    textColor: "text-tribe-blue",
+    featured: false,
+    slug: "express-dj"
   }
 ];
 
 const categories = ["All", "Social Media", "AI", "Education", "Health & Wellness", "Food & Beverage", "E-commerce", "Gamification", "AR", "Sports", "PropTech", "Agency", "Design"];
-const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design"];
+const platforms = ["All", "Mobile", "Web", "AI", "Game", "Design", "Audit"];
+
+// Audit engagements live in their own section below the main grid.
+const AUDIT_CATEGORY = "Audit";
+const isAudit = (study: { category: string }) => study.category === AUDIT_CATEGORY;
 
 // ---- Curated listing behaviour ----------------------------------------------
 // These lists are the source of truth for the listing (the `featured` flags in
@@ -475,7 +503,7 @@ const ecosystemTags = [
 const domainTags = [
   "Social Media", "Social Platform", "Community", "Education", "Study",
   "Language Learning", "Gaming", "Strategy", "Card Game", "Simulation",
-  "Puzzle", "Relaxation", "Storytelling", "Logistics", "Food Delivery",
+  "Puzzle", "Relaxation", "Storytelling", "Logistics", "Food Delivery", "Audit",
   "Sports", "Health", "Wellness", "PropTech", "FinTech", "Luxury", "Literary", "Agency", "Design"
 ];
 
@@ -537,6 +565,145 @@ const TrailStoriesPage = () => {
     // Curated order: featured block (app | web | app rows), then big projects
     // with live links, remaining products, design showcases, e-commerce last.
     .sort((a, b) => displayRank(a.slug) - displayRank(b.slug));
+
+  const mainStudies = filteredStudies.filter(study => !isAudit(study));
+  const auditStudies = filteredStudies.filter(isAudit);
+
+  const renderStudyCard = (study: (typeof caseStudies)[number], index: number) => (
+    <motion.div
+      key={study.id}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ delay: index * 0.05, duration: 0.5 }}
+      whileHover={{
+        y: -12,
+        rotateY: 2,
+        scale: 1.03,
+        transition: { duration: 0.3 }
+      }}
+      className="group cursor-pointer relative"
+    >
+      <Link to={`/case-study/${study.slug}`}>
+        <div className="bg-gradient-to-b from-white via-earth-50 to-white rounded-3xl shadow-lg overflow-hidden border border-gray-200/60 h-full flex flex-col relative backdrop-blur-sm hover:shadow-2xl hover:shadow-tribe-blue/15 hover:border-tribe-blue/40 transition-all duration-500">
+          {/* Gradient overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-br from-tribe-blue/0 via-tribe-blue/0 to-tribe-blue/0 group-hover:from-tribe-blue/8 group-hover:via-transparent group-hover:to-transparent transition-all duration-500 rounded-3xl pointer-events-none z-0" />
+
+          {/* Image Container */}
+          <div className="relative h-56 overflow-hidden bg-gradient-to-br from-earth-100 via-earth-50 to-white flex items-center justify-center">
+            {/* Decorative corner accent */}
+            <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-tribe-blue/10 to-transparent rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {FEATURED_SLUGS.has(study.slug) && (
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 + 0.3, type: "spring", stiffness: 200 }}
+                className="absolute top-4 right-4 z-20 px-4 py-1.5 bg-gradient-to-r from-tribe-blue to-tribe-blue/90 text-white text-xs font-bold rounded-full shadow-xl flex items-center gap-1.5 backdrop-blur-sm border border-white/20"
+              >
+                <Sparkles className="h-3.5 w-3.5" />
+                Featured
+              </motion.div>
+            )}
+
+            {study.image ? (
+              <motion.div
+                className="relative w-full h-full"
+                whileHover={{ scale: 1.08, rotate: 0.5 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <img
+                  src={study.image}
+                  alt={study.title}
+                  className="w-full h-full object-cover"
+                />
+                {/* Image overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            ) : (
+              <div className="text-earth-300 font-display font-bold text-lg opacity-50">
+                {study.title}
+              </div>
+            )}
+
+            {/* Hover overlay with CTA */}
+            <div className="absolute inset-0 bg-gradient-to-t from-earth-900/95 via-earth-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6 z-10">
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                whileHover={{ y: 0, opacity: 1 }}
+                className="text-white text-sm font-semibold flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
+              >
+                View Project <ArrowRight className="h-4 w-4" />
+              </motion.span>
+            </div>
+
+            {/* Corner accent lines */}
+            <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-tribe-blue/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-3xl" />
+          </div>
+
+          {/* Content */}
+          <div className="p-6 relative z-10 flex-1 flex flex-col">
+            <div className="flex items-center gap-2 mb-3">
+              <span className={`px-3 py-1.5 rounded-full ${study.color} ${study.textColor} text-xs font-semibold shadow-sm border border-tribe-blue/20 bg-gradient-to-r from-tribe-blue/5 to-transparent`}>
+                {study.category}
+              </span>
+            </div>
+
+            <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-tribe-blue transition-colors duration-300 line-clamp-2 leading-tight">
+              {study.title}
+            </h3>
+
+            <p className="text-earth-600 text-sm mb-5 line-clamp-3 leading-relaxed flex-1">
+              {study.description}
+            </p>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-5">
+              {study.tags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 bg-gradient-to-r from-earth-50 to-white text-earth-700 rounded-lg text-xs font-medium border border-earth-200/50 shadow-sm group-hover:border-tribe-blue/40 group-hover:bg-gradient-to-r group-hover:from-tribe-blue/10 group-hover:to-white transition-all duration-300"
+                >
+                  {tag}
+                </span>
+              ))}
+              {study.tags.length > 3 && (
+                <span className="px-3 py-1 bg-gradient-to-r from-earth-50 to-white text-earth-700 rounded-lg text-xs font-medium border border-earth-200/50 shadow-sm">
+                  +{study.tags.length - 3}
+                </span>
+              )}
+            </div>
+
+            {/* CTA */}
+            <div className="inline-flex items-center text-tribe-blue font-semibold text-sm group-hover:gap-3 gap-1 transition-all duration-300 mt-auto">
+              <span>View Case Study</span>
+              <motion.div
+                animate={{ x: 0 }}
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <ArrowRight className="h-4 w-4" />
+              </motion.div>
+            </div>
+
+            {/* Bottom corner accent */}
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-tribe-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-br-3xl" />
+          </div>
+
+          {/* Shine effect on hover */}
+          <motion.div
+            className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden"
+            initial={{ x: '-100%' }}
+            whileHover={{ x: '100%' }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full" />
+          </motion.div>
+        </div>
+      </Link>
+    </motion.div>
+  );
 
   const toggleTag = (tag: string) => {
     if (activeTags.includes(tag)) {
@@ -867,6 +1034,7 @@ const TrailStoriesPage = () => {
       </motion.section>
 
       {/* Case Studies Grid */}
+      {(mainStudies.length > 0 || filteredStudies.length === 0) && (
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -876,141 +1044,7 @@ const TrailStoriesPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredStudies.length > 0 ? (
-              filteredStudies.map((study, index) => (
-                <motion.div
-                  key={study.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.05, duration: 0.5 }}
-                  whileHover={{
-                    y: -12,
-                    rotateY: 2,
-                    scale: 1.03,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="group cursor-pointer relative"
-                >
-                  <Link to={`/case-study/${study.slug}`}>
-                    <div className="bg-gradient-to-b from-white via-earth-50 to-white rounded-3xl shadow-lg overflow-hidden border border-gray-200/60 h-full flex flex-col relative backdrop-blur-sm hover:shadow-2xl hover:shadow-tribe-blue/15 hover:border-tribe-blue/40 transition-all duration-500">
-                      {/* Gradient overlay on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-tribe-blue/0 via-tribe-blue/0 to-tribe-blue/0 group-hover:from-tribe-blue/8 group-hover:via-transparent group-hover:to-transparent transition-all duration-500 rounded-3xl pointer-events-none z-0" />
-
-                      {/* Image Container */}
-                      <div className="relative h-56 overflow-hidden bg-gradient-to-br from-earth-100 via-earth-50 to-white flex items-center justify-center">
-                        {/* Decorative corner accent */}
-                        <div className="absolute top-0 left-0 w-24 h-24 bg-gradient-to-br from-tribe-blue/10 to-transparent rounded-br-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                        {FEATURED_SLUGS.has(study.slug) && (
-                          <motion.div
-                            initial={{ scale: 0, rotate: -180 }}
-                            whileInView={{ scale: 1, rotate: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 + 0.3, type: "spring", stiffness: 200 }}
-                            className="absolute top-4 right-4 z-20 px-4 py-1.5 bg-gradient-to-r from-tribe-blue to-tribe-blue/90 text-white text-xs font-bold rounded-full shadow-xl flex items-center gap-1.5 backdrop-blur-sm border border-white/20"
-                          >
-                            <Sparkles className="h-3.5 w-3.5" />
-                            Featured
-                          </motion.div>
-                        )}
-
-                        {study.image ? (
-                          <motion.div
-                            className="relative w-full h-full"
-                            whileHover={{ scale: 1.08, rotate: 0.5 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                          >
-                            <img
-                              src={study.image}
-                              alt={study.title}
-                              className="w-full h-full object-cover"
-                            />
-                            {/* Image overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                          </motion.div>
-                        ) : (
-                          <div className="text-earth-300 font-display font-bold text-lg opacity-50">
-                            {study.title}
-                          </div>
-                        )}
-
-                        {/* Hover overlay with CTA */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/95 via-earth-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6 z-10">
-                          <motion.span
-                            initial={{ y: 20, opacity: 0 }}
-                            whileHover={{ y: 0, opacity: 1 }}
-                            className="text-white text-sm font-semibold flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20"
-                          >
-                            View Project <ArrowRight className="h-4 w-4" />
-                          </motion.span>
-                        </div>
-
-                        {/* Corner accent lines */}
-                        <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-tribe-blue/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-tl-3xl" />
-                      </div>
-
-                      {/* Content */}
-                      <div className="p-6 relative z-10 flex-1 flex flex-col">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className={`px-3 py-1.5 rounded-full ${study.color} ${study.textColor} text-xs font-semibold shadow-sm border border-tribe-blue/20 bg-gradient-to-r from-tribe-blue/5 to-transparent`}>
-                            {study.category}
-                          </span>
-                        </div>
-
-                        <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-tribe-blue transition-colors duration-300 line-clamp-2 leading-tight">
-                          {study.title}
-                        </h3>
-
-                        <p className="text-earth-600 text-sm mb-5 line-clamp-3 leading-relaxed flex-1">
-                          {study.description}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mb-5">
-                          {study.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 bg-gradient-to-r from-earth-50 to-white text-earth-700 rounded-lg text-xs font-medium border border-earth-200/50 shadow-sm group-hover:border-tribe-blue/40 group-hover:bg-gradient-to-r group-hover:from-tribe-blue/10 group-hover:to-white transition-all duration-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {study.tags.length > 3 && (
-                            <span className="px-3 py-1 bg-gradient-to-r from-earth-50 to-white text-earth-700 rounded-lg text-xs font-medium border border-earth-200/50 shadow-sm">
-                              +{study.tags.length - 3}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* CTA */}
-                        <div className="inline-flex items-center text-tribe-blue font-semibold text-sm group-hover:gap-3 gap-1 transition-all duration-300 mt-auto">
-                          <span>View Case Study</span>
-                          <motion.div
-                            animate={{ x: 0 }}
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <ArrowRight className="h-4 w-4" />
-                          </motion.div>
-                        </div>
-
-                        {/* Bottom corner accent */}
-                        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-tribe-blue/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-br-3xl" />
-                      </div>
-
-                      {/* Shine effect on hover */}
-                      <motion.div
-                        className="absolute inset-0 pointer-events-none rounded-3xl overflow-hidden"
-                        initial={{ x: '-100%' }}
-                        whileHover={{ x: '100%' }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
-                      >
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full" />
-                      </motion.div>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))
+              mainStudies.map((study, index) => renderStudyCard(study, index))
             ) : (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -1039,6 +1073,44 @@ const TrailStoriesPage = () => {
           </div>
         </div>
       </motion.section>
+      )}
+
+      {/* Audit Projects — kept separate from the product work above */}
+      {auditStudies.length > 0 && (
+        <section
+          id="audit-projects"
+          aria-labelledby="audit-projects-heading"
+          className="relative py-20 bg-gradient-to-b from-earth-900 via-earth-800 to-earth-900 text-white overflow-hidden"
+        >
+          <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none" />
+          <div className="absolute -top-24 right-0 w-96 h-96 bg-tribe-blue/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mb-12"
+            >
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tribe-blue/20 border border-tribe-blue/40 text-tribe-blue text-xs font-bold uppercase tracking-widest mb-4">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                Audit Projects
+              </span>
+              <h2 id="audit-projects-heading" className="text-3xl md:text-4xl font-display font-bold mb-4 leading-tight">
+                Independent Audits &amp; <span className="text-tribe-blue">Technical Assessments</span>
+              </h2>
+              <p className="text-earth-200 text-lg leading-relaxed">
+                Not every engagement is a build. Here we reviewed existing platforms and integrations — architecture, security, performance, and code — and handed teams a clear, prioritised plan to act on.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-foreground">
+              {auditStudies.map((study, index) => renderStudyCard(study, index))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <motion.section

@@ -49,6 +49,8 @@ const CaseStudyLumeReader = lazy(() => import("./pages/CaseStudyLumeReader"));
 const CaseStudyDani = lazy(() => import("./pages/CaseStudyDani"));
 const CaseStudyRenee = lazy(() => import("./pages/CaseStudyRenee"));
 const CaseStudyRentigo = lazy(() => import("./pages/CaseStudyRentigo"));
+const CaseStudyClickupFreshdesk = lazy(() => import("./pages/CaseStudyClickupFreshdesk"));
+const CaseStudyExpressDj = lazy(() => import("./pages/CaseStudyExpressDj"));
 const CaseStudyFundreef = lazy(() => import("./pages/CaseStudyFundreef"));
 const CaseStudyFreecer = lazy(() => import("./pages/CaseStudyFreecer"));
 const CaseStudyExre = lazy(() => import("./pages/CaseStudyExre"));
@@ -120,6 +122,8 @@ const AppRoutes = () => {
         <Route path="/case-study/split-trip-design" element={<CaseStudySplitTripDesign />} />
         <Route path="/case-study/talkietotz-design" element={<CaseStudyTalkieTotzDesign />} />
         <Route path="/case-study/rentigo" element={<CaseStudyRentigo />} />
+        <Route path="/case-study/clickup-freshdesk" element={<CaseStudyClickupFreshdesk />} />
+        <Route path="/case-study/express-dj" element={<CaseStudyExpressDj />} />
         <Route path="/case-study/fundreef" element={<CaseStudyFundreef />} />
         <Route path="/case-study/freecer" element={<CaseStudyFreecer />} />
         <Route path="/case-study/exre" element={<CaseStudyExre />} />

@@ -162,6 +162,8 @@ const CASE_STUDIES: CaseStudyMeta[] = [
   { slug: "dani", title: "DANI by Daniel K", category: "Web", description: "Luxury Jewelry E-Commerce: A custom-built Shopify Plus storefront with internationalization and conversion-driven UI/UX." },
   { slug: "renee", title: "Renée", category: "Web", description: "AI-Powered Emotional Support: A 24/7 judgment-free therapeutic companion built with Next.js 15 and Prismic CMS for mental wellness." },
   { slug: "rentigo", title: "Rentigo", category: "Web", description: "Enterprise Property Management: A complete lifecycle PMS with multi-role access, financial automation, and portal syndication." },
+  { slug: "clickup-freshdesk", title: "ClickUp → Freshdesk Audit", category: "Audit", description: "Serverless integration & architecture audit of a ClickUp-to-Freshdesk sync — security, reliability, and code review plus operational runbooks." },
+  { slug: "express-dj", title: "Express DJ Audit", category: "Audit", description: "Full-stack performance, security, and code audit of a Laravel DJ & talent booking platform, with a graded scorecard and prioritised roadmap." },
   { slug: "fundreef", title: "Fundreef", category: "Web", description: "AI-Powered Fundraising: An intelligent platform matching startups with investors using Gemini AI, Meilisearch, and real-time CRM tools." },
   { slug: "freecer", title: "Freecer.at", category: "Web", description: "Premium Luxury E-commerce: A high-performance Shopify storefront with advanced SEO, global reach, and conversion-focused design." },
   { slug: "exre", title: "EXRE", category: "Web", description: "Professional Agency Platform: A multilingual, high-performance website built with Next.js and Sanity CMS for brand authority and lead generation." },
