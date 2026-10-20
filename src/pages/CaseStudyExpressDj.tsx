@@ -5,13 +5,18 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import SectionShot from '@/components/SectionShot';
 import SectionKicker from '@/components/SectionKicker';
 import CaseStudyHero from '@/components/CaseStudyHero';
 import ReadingProgress from '@/components/ReadingProgress';
 import Reveal, { revealContainer, revealItem } from '@/components/Reveal';
 
-// Placeholder cover until the project's own images are supplied.
-const SLIDER_IMAGES = ["/express-dj-hero/1.png"];
+const SLIDER_IMAGES = [
+    "/express-dj-hero/1.png",
+    "/express-dj-hero/2.png",
+    "/express-dj-hero/3.png",
+    "/express-dj-hero/4.png"
+];
 
 const AUDIT_GOALS = [
     { icon: Gauge, title: "Performance & Load", desc: "Measure real page speed and how the platform behaves under concurrent booking traffic." },
@@ -87,6 +92,17 @@ const CaseStudyExpressDj = () => {
                                 </div>
                             </Reveal>
 
+                            <SectionShot variant="wide" src="/express-dj-content/project-overview.webp" alt="Express DJ project description" caption="Project description — the Express booking platform and the five audit dimensions." />
+
+                            <Reveal>
+                                <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Project Story</h2>
+                                <p className="text-earth-700 mb-6 text-lg leading-relaxed">
+                                    The client had a running product but no objective read on its condition. Rather than guess, they commissioned a full technical audit. We examined the public site and admin panel through a code reviewer's, pen tester's, and performance engineer's lens at once — reproducing every issue, benchmarking with industry tools, and grading each dimension so the roadmap was driven by evidence, not opinion.
+                                </p>
+                            </Reveal>
+
+                            <SectionShot variant="left" src="/express-dj-content/project-story.webp" alt="Express DJ project story" caption="Project story — scope breakdown and the evidence-led audit methodology." />
+
                             <Reveal>
                                 <SectionKicker index="01" />
                                 <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Audit Goals</h2>
@@ -117,6 +133,8 @@ const CaseStudyExpressDj = () => {
                                 ))}
                             </motion.div>
 
+                            <SectionShot variant="right" src="/express-dj-content/audit-goals.webp" alt="Express DJ audit goals" caption="Audit goals — performance, security, code, database health, and accessibility." />
+
                             <Reveal>
                                 <SectionKicker index="02" />
                                 <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Audit Coverage</h2>
@@ -139,6 +157,8 @@ const CaseStudyExpressDj = () => {
                                     </motion.div>
                                 ))}
                             </motion.div>
+
+                            <SectionShot variant="left" src="/express-dj-content/audit-coverage.webp" alt="Express DJ audit coverage" caption="Audit coverage — the tools and tests applied across the platform." />
 
                             <Reveal>
                                 <SectionKicker index="03" />
@@ -175,6 +195,8 @@ const CaseStudyExpressDj = () => {
                                     </motion.div>
                                 ))}
                             </motion.div>
+
+                            <SectionShot variant="wide" src="/express-dj-content/key-findings.webp" alt="Express DJ key findings" caption="Key findings — the graded scorecard from A+ authorization to F end-to-end testing." />
 
                             <Reveal>
                                 <SectionKicker index="04" />
@@ -234,6 +256,11 @@ const CaseStudyExpressDj = () => {
                                     </div>
                                 </div>
                             </Reveal>
+
+                            <div className="not-prose my-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                                <SectionShot variant="pair" src="/express-dj-content/solution.webp" alt="Express DJ solution" caption="The solution — scorecard, bug register, roadmap, and modernisation paths." />
+                                <SectionShot variant="pair" className="md:mt-14" src="/express-dj-content/tech-stack.webp" alt="Express DJ tech stack" caption="The Laravel stack audited and the toolchain used to test it." />
+                            </div>
 
                             <Reveal>
                                 <SectionKicker index="05" />
