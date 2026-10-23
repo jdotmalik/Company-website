@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, Activity, TrendingUp, Bell, Database } from 'lucide-react';
+import { CheckCircle, Activity, TrendingUp, Bell, Database, PhoneCall, Users, UserCheck, LineChart } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -12,10 +12,61 @@ import ReadingProgress from '@/components/ReadingProgress';
 import Reveal, { revealContainer, revealItem } from '@/components/Reveal';
 
 const SLIDER_IMAGES = [
-    "/ringba/2.png",
-    "/ringba/14.png",
-    "/ringba/15.png",
-    "/ringba/16.png"
+    "/ringba-hero/1.png",
+    "/ringba-hero/2.png",
+    "/ringba-hero/3.png",
+    "/ringba-hero/4.png"
+];
+
+const PLATFORM_MODULES = [
+    {
+        icon: PhoneCall,
+        title: "Call Quality & Routing Insights",
+        image: "/ringba-content/call-quality-routing.webp",
+        caption: "QA Command Center and Relay Pings breakdown for call quality and routing.",
+        features: [
+            { title: "QA Command Center", desc: "Monitor publisher quality, connectivity issues, and compliance flags in one workspace." },
+            { title: "Phone Calls Explorer", desc: "Filter calls by partner, campaign, or outcome; inspect details and available recordings." },
+            { title: "Rejection Breakdown", desc: "Investigate buyer responses, rejection reasons, and routing event timelines." },
+            { title: "Recorded Review Decisions", desc: "Review compliance flags, mark false detections, and retain decision history." },
+        ],
+    },
+    {
+        icon: Users,
+        title: "Client Onboarding & Offer Management",
+        image: "/ringba-content/client-onboarding-offers.webp",
+        caption: "Client directory, offers library, and secure partner onboarding invites.",
+        features: [
+            { title: "Secure Invitations", desc: "Invite publishers and buyers through secure links tied to partner codes." },
+            { title: "Structured Onboarding", desc: "Collect contacts, multiple offers, assets, references, and consent with required-field validation." },
+            { title: "Offer Review & Library", desc: "Approve or reject offers, search assets, and manage internal client documents." },
+            { title: "Dedicated Client Portal", desc: "Clients view approved offers and assigned performance, and submit campaign requests." },
+        ],
+    },
+    {
+        icon: UserCheck,
+        title: "EHG Performance & Agent Operations",
+        image: "/ringba-content/ehg-agent-operations.webp",
+        caption: "Agent comparison reports and the EHG performance dashboard.",
+        features: [
+            { title: "Detailed CPA Reporting", desc: "Compare spend, calls, sales, and CPA by agent, publisher, hour, and state." },
+            { title: "Weekly Agent Comparisons", desc: "Track weekly agent and comparison trends to review changes in activity and sales." },
+            { title: "Dispositions & Callbacks", desc: "Explore call outcomes and callback schedules by agent, campaign, and status." },
+            { title: "Carrier & SEP Analysis", desc: "Review sales by carrier and SEP category alongside the EHG dashboard overview." },
+        ],
+    },
+    {
+        icon: LineChart,
+        title: "Profitability & Operational Control",
+        image: "/ringba-content/profitability-control.webp",
+        caption: "Internal profitability reporting and the feedback inbox.",
+        features: [
+            { title: "Internal Profitability", desc: "Review campaign revenue, costs, profit, and margin, with AI analysis ready to run once client inputs are supplied." },
+            { title: "Performance Comparisons", desc: "Compare revenue periods, campaigns, publishers, and vertical CPA performance." },
+            { title: "Feedback to Resolution", desc: "Track prioritised requests, attachments, and statuses through the inbox and ClickUp." },
+            { title: "Monitoring & Access", desc: "Manage alerts, CPA settings, profiles, and role-based access." },
+        ],
+    },
 ];
 
 const CaseStudyRingba = () => {
@@ -202,8 +253,72 @@ const CaseStudyRingba = () => {
 
                             <SectionShot variant="left" src="/ringba-content/tech-stack.webp" alt="PPC dashboard technical implementation" caption="Technical implementation and stack." />
 
+
                             <Reveal>
                                 <SectionKicker index="04" />
+                                <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Platform Modules</h2>
+                                <p className="text-earth-700 mb-10 text-lg leading-relaxed">
+                                    Beyond the core analytics, the platform grew into a full operations suite — covering call quality, partner onboarding, agent performance, and internal profitability in one place.
+                                </p>
+                            </Reveal>
+
+                            {PLATFORM_MODULES.map(({ icon: Icon, title, image, caption, features }, moduleIndex) => (
+                                <div key={title} className="mb-4">
+                                    <Reveal>
+                                        <h3 className="flex items-center gap-3 text-2xl font-display font-bold mb-6 text-earth-900">
+                                            <span className="bg-tribe-blue/10 p-2.5 rounded-lg">
+                                                <Icon className="h-6 w-6 text-tribe-blue" />
+                                            </span>
+                                            {title}
+                                        </h3>
+                                    </Reveal>
+                                    <motion.div
+                                        variants={revealContainer}
+                                        initial="hidden"
+                                        whileInView="show"
+                                        viewport={{ once: true, margin: '-80px' }}
+                                        className="grid md:grid-cols-2 gap-4"
+                                    >
+                                        {features.map((feature) => (
+                                            <motion.div
+                                                key={feature.title}
+                                                variants={revealItem}
+                                                whileHover={{ y: -4 }}
+                                                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                                                className="flex items-start gap-3 bg-earth-50 p-4 rounded-lg ring-1 ring-transparent transition-all duration-500 hover:ring-tribe-blue/30 hover:shadow-lg"
+                                            >
+                                                <CheckCircle className="h-5 w-5 text-tribe-blue mt-1 flex-shrink-0" />
+                                                <div>
+                                                    <h4 className="font-bold text-earth-900 text-base">{feature.title}</h4>
+                                                    <p className="text-earth-600 text-sm mb-0">{feature.desc}</p>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </motion.div>
+                                    <SectionShot
+                                        variant={moduleIndex % 2 === 0 ? 'right' : 'left'}
+                                        src={image}
+                                        alt={`PPC dashboard ${title}`}
+                                        caption={caption}
+                                    />
+                                </div>
+                            ))}
+
+                            <Reveal>
+                                <SectionKicker index="05" />
+                                <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">UI/UX</h2>
+                                <p className="text-earth-700 mb-6 text-lg leading-relaxed">
+                                    A dark, data-dense interface built for operators who live in the dashboard all day — colour-coded campaign charts, revenue and conversion trends, and a creative studio for generating image and video ads, all a click away in a single sidebar.
+                                </p>
+                            </Reveal>
+
+                            <div className="not-prose my-12 grid gap-6 md:grid-cols-2 md:gap-8">
+                                <SectionShot variant="pair" src="/ringba-content/ui-ux-1.webp" alt="PPC dashboard campaign charts and trends" caption="Connected-call charts, revenue & profit trends, and conversion tracking." />
+                                <SectionShot variant="pair" className="md:mt-14" src="/ringba-content/ui-ux-2.webp" alt="PPC dashboard image ads generator" caption="Campaign comparisons alongside the Image Ads Generator." />
+                            </div>
+
+                            <Reveal>
+                                <SectionKicker index="06" />
                                 <h2 className="text-3xl font-display font-bold mb-6 text-earth-900">Project Outcome</h2>
                                 <p className="text-earth-700 mb-12 text-lg leading-relaxed">
                                     The dashboard replaced manual spreadsheet reporting with a single real-time source of truth for pay-per-call performance — roughly 30 screens of live analytics backed by automated ingestion, a per-vertical CPA engine, and Telegram alerting. The team now reacts to metric breaches within minutes instead of discovering them at end-of-day.

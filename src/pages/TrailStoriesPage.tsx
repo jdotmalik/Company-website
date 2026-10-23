@@ -349,7 +349,7 @@ const caseStudies = [
     title: "PPC Analytics Dashboard",
     category: "Web",
     description: "A real-time PPC performance and call-tracking analytics platform with live dashboards, a CPA/profitability engine, and automated Telegram alerting.",
-    image: "/ringba/2.png",
+    image: "/ringba-hero/1.webp",
     tags: ["NestJS", "React", "Analytics", "Real-time", "PostgreSQL"],
     color: "bg-tribe-blue/10",
     textColor: "text-tribe-blue",
